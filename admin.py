@@ -28,6 +28,18 @@ class admin(commands.Cog):
                 await ctx.send(f'Unbanned {user.mention}')
                 return
 
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def clear(self,ctx,amount : int):
+        if amount > 100:
+            amount = 100
+        if amount == None:
+            await ctx.channel.purge(limit=100)
+        else:
+            await ctx.channel.purge(limit=amount)
+
+
+
 
 def setup(bot):
     bot.add_cog(admin(bot))
