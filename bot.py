@@ -1,4 +1,10 @@
 from discord.ext import commands
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN= os.getenv("DISCORD_TOKEN")
 
 bot = commands.Bot(command_prefix='.')
 
@@ -21,4 +27,4 @@ async def on_message(message):
 
 bot.load_extension('admin')
 bot.load_extension('games')
-bot.run("ODA4MTgyMzExNTc2NTM1MDcx.YCC0bg._judyDV20-hTo7auRv0xMovJHyU")
+bot.run(TOKEN)
