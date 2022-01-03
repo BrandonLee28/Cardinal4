@@ -23,6 +23,12 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You dont have all the requirements :angry:")
 
+@bot.event
+async def on_ready():
+    activity = discord.Game(name="uh....", type=3)
+    await bot.change_presence(status=discord.Status.idle, activity=activity)
+    print("Bot is ready!")
+
 bot.load_extension('admin')
 bot.load_extension('upload')
 bot.load_extension('games')
