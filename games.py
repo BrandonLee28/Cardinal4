@@ -27,7 +27,7 @@ class games(commands.Cog):
 
     @commands.command()
     async def animequote(self, ctx):
-        animequote = requests.get('https://animechan.vercel.app/api/random')
+        r = requests.get('https://animechan.vercel.app/api/random')
         embed=discord.Embed(title="Random Anime Quote", color=0xff00c8)
         embed.add_field(name="Character:", value=r.json()['character'], inline=True)
         embed.add_field(name="Quote:", value=r.json()['quote'], inline=False)
