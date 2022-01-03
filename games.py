@@ -4,7 +4,6 @@ import discord
 import asyncio
 from discord.ext import commands
 import requests
-from waifuim import WaifuAioClient
 
 bot = commands.Bot(command_prefix='.')
 class games(commands.Cog):
