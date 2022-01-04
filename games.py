@@ -52,7 +52,8 @@ class games(commands.Cog):
         print("2")
         embed=discord.Embed(title="why did i waste my time on this...", color=0xdb76d2)
         embed.set_image(url=r.json()['images'][0]['url'])
-        await ctx.send(embed=embed)
+        if ctx.channel.is_nsfw():
+            await ctx.send(embed=embed)
         print("3")
 
 
