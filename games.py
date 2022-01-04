@@ -57,7 +57,7 @@ class games(commands.Cog):
             print("3")
 
     @commands.command()
-    async def waifu(self,ctx,category):
+    async def waifu(self,ctx):
         print("1")
         r = requests.get('https://api.waifu.im/waifu/waifu')
         print("2")
