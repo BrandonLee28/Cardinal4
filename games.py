@@ -46,14 +46,27 @@ class games(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
+    async def nsfw(self,ctx,category):
+        if ctx.channel.is_nsfw():
+            print("1")
+            r = requests.get('https://api.waifu.im/nsfw/'+category)
+            print("2")
+            embed=discord.Embed(title="why did i waste my time on this...", color=0xdb76d2)
+            embed.set_image(url=r.json()['images'][0]['url'])
+            await ctx.send(embed=embed)
+            print("3")
+
+    @commands.command()
     async def waifu(self,ctx,category):
         print("1")
-        r = requests.get('https://api.waifu.im/nsfw/'+category)
+        r = requests.get('https://api.waifu.im/waifu/waifu')
         print("2")
         embed=discord.Embed(title="why did i waste my time on this...", color=0xdb76d2)
         embed.set_image(url=r.json()['images'][0]['url'])
         await ctx.send(embed=embed)
         print("3")
+
+
 
 
 
