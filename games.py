@@ -48,7 +48,7 @@ class games(commands.Cog):
     @commands.command()
     async def waifu(self,ctx):
         print("1")
-        r = requests.get('https://api.waifu.im/sfw/maid')
+        r = requests.get('https://api.waifu.im/sfw/waifu')
         print("2")
         embed=discord.Embed(title="why did i waste my time on this...", color=0xdb76d2)
         embed.set_image(url=r.json()['images'][0]['url'])
