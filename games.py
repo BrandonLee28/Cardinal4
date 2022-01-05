@@ -64,6 +64,16 @@ class games(commands.Cog):
             embed.set_image(url=r.json()['images'][0]['url'])
             await ctx.send(embed=embed)
 
+    @commands.command()
+    async def meme(self,ctx):
+        r = requests.get('https://meme-api.herokuapp.com/gimme')
+        embed=discord.Embed(title="bruh random meme..", color=495e35)
+        embed.set_image(url=r.json()['preview'][0])
+        await ctx.send(embed=embed)
+
+
+
+
 
 
 

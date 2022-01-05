@@ -48,6 +48,7 @@ class admin(commands.Cog):
         embed.add_field(name=".fakeidentity", value="gives a random fake identity", inline=True)
         embed.add_field(name=".nsfw (category)", value="shows a nsfw image based on the category you give", inline=True)
         embed.add_field(name=".waifu", value="shows a random waifu image", inline=True)
+        embed.add_field(name=".member", value="shows a random reddit meme", inline=True)
         embed.set_footer(text="Made by @brandonn")
         await ctx.send(embed=embed)
 
