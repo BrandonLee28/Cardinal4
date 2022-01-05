@@ -14,7 +14,7 @@ async def ping(ctx):
    await ctx.send(f'My ping is {bot.latency}!')
 
 @bot.command()
-async def help(ctx):
+async def commands(ctx):
     embed=discord.Embed(title="Bot Commands", description="Shows all the commands of the bot", color=0x00ff1e)
     embed.add_field(name=".ping", value="shows the latency of the bot", inline=False)
     embed.add_field(name=".coinflip", value="flips a coin", inline=True)
