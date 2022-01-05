@@ -12,24 +12,7 @@ bot = commands.Bot(command_prefix='.')
 @commands.cooldown(1,15)
 async def ping(ctx):
    await ctx.send(f'My ping is {bot.latency}!')
-
-@bot.command(pass_context=True)
-@commands.command
-async def commands(ctx):
-    embed=discord.Embed(title="Bot Commands", description="Shows all the commands of the bot", color=0x00ff1e)
-    embed.add_field(name=".ping", value="shows the latency of the bot", inline=False)
-    embed.add_field(name=".coinflip", value="flips a coin", inline=True)
-    embed.add_field(name=".animequote", value="shows a random anime quote and the character", inline=True)
-    embed.add_field(name=".fakeidentity", value="gives a random fake identity", inline=True)
-    embed.add_field(name=".nsfw (category)", value="shows a nsfw image based on the category you give", inline=True)
-    embed.add_field(name=".waifu", value="shows a random waifu image", inline=True)
-    embed.set_footer(text="Made by @brandonn")
-    await ctx.send(embed=embed)
-
-
-
-
-
+   
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
