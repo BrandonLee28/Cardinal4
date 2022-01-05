@@ -58,7 +58,7 @@ class games(commands.Cog):
 
     @commands.command()
     async def waifu(self,ctx):
-        if ctx.channel == "anime":
+        if ctx.channel.name == "anime":
             r = requests.get('https://api.waifu.im/sfw/waifu')
             embed=discord.Embed(title="why did i waste my time on this...", color=0xdb76d2)
             embed.set_image(url=r.json()['images'][0]['url'])
