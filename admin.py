@@ -40,23 +40,18 @@ class admin(commands.Cog):
             await ctx.channel.purge(limit=amount)
 
     @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def mute(ctx, member: discord.Member, *, reason=None):
-        guild = ctx.guild
-        mutedRole = discord.utils.get(guild.roles, name="Muted")
+    async def commands(ctx):
+    embed=discord.Embed(title="Bot Commands", description="Shows all the commands of the bot", color=0x00ff1e)
+    embed.add_field(name=".ping", value="shows the latency of the bot", inline=False)
+    embed.add_field(name=".coinflip", value="flips a coin", inline=True)
+    embed.add_field(name=".animequote", value="shows a random anime quote and the character", inline=True)
+    embed.add_field(name=".fakeidentity", value="gives a random fake identity", inline=True)
+    embed.add_field(name=".nsfw (category)", value="shows a nsfw image based on the category you give", inline=True)
+    embed.add_field(name=".waifu", value="shows a random waifu image", inline=True)
+    embed.set_footer(text="Made by @brandonn")
+    await ctx.send(embed=embed)
 
-        if not mutedRole:
-            mutedRole = await guild.create_role(name="Muted")
 
-            for channel in guild.channels:
-                await channel.set_permissions(mutedRole, speak=False, send_messages=False, read_message_history=True,
-                                              read_messages=False)
-        embed = discord.Embed(title="muted", description=f"{member.mention} was muted ",
-                              colour=discord.Colour.light_gray())
-        embed.add_field(name="reason:", value=reason, inline=False)
-        await ctx.send(embed=embed)
-        await member.add_roles(mutedRole, reason=reason)
-        await member.send(f" you have been muted from: {guild.name} reason: {reason}")
 
 
 def setup(bot):
