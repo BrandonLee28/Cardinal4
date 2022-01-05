@@ -40,7 +40,7 @@ class admin(commands.Cog):
             await ctx.channel.purge(limit=amount)
 
     @commands.command()
-    async def commands(ctx):
+    async def commands(self, ctx):
     embed=discord.Embed(title="Bot Commands", description="Shows all the commands of the bot", color=0x00ff1e)
     embed.add_field(name=".ping", value="shows the latency of the bot", inline=False)
     embed.add_field(name=".coinflip", value="flips a coin", inline=True)
