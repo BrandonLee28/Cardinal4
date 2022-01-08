@@ -31,7 +31,7 @@ async def on_ready():
 async def on_message(ctx):
     if ctx.channel.name == "counting":
         try:
-            number = int(ctx.content)
+            number = float(ctx.content)
             with open('storage.json','r+') as f:
                 data = json.load(f)
                 if number == data['current']+1:
@@ -53,6 +53,7 @@ async def on_message(ctx):
 
                 else:
                     data['current'] = 0
+                    data['lastcounter'] = ""
                     f.seek(0)
                     json.dump(data,f,indent=4)
                     f.truncate()
