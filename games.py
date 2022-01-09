@@ -49,13 +49,12 @@ class games(commands.Cog):
     @commands.command()
     async def nsfw(self,ctx,category):
         if ctx.channel.is_nsfw():
-            print("1")
             r = requests.get('https://api.waifu.im/nsfw/'+category)
-            print("2")
             embed=discord.Embed(title="why did i waste my time on this...", color=0xdb76d2)
             embed.set_image(url=r.json()['images'][0]['url'])
             await ctx.send(embed=embed)
-            print("3")
+        else:
+            await ctx.send("This is not the correct channel for this command.")
 
     @commands.command()
     async def waifu(self,ctx):
@@ -64,6 +63,8 @@ class games(commands.Cog):
             embed=discord.Embed(title="why did i waste my time on this...", color=0xdb76d2)
             embed.set_image(url=r.json()['images'][0]['url'])
             await ctx.send(embed=embed)
+        else:
+            await ctx.send("This is not the correct channel for this command.")
 
     @commands.command()
     async def meme(self,ctx):
@@ -72,16 +73,23 @@ class games(commands.Cog):
         embed.set_image(url=r.json()['preview'][3])
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def joke(self,ctx):
+        url = "https://random-stuff-api.p.rapidapi.com/joke"
 
+        querystring = {"type":"any"}
 
+        headers = {
+            'authorization': "C8xh6UHmszvv",
+            'x-rapidapi-host': "random-stuff-api.p.rapidapi.com",
+            'x-rapidapi-key': "29342191f7msh58cba8f92580e3fp13f8cfjsn2d4552a32237"
+            }
 
-
-
-
-
-
-
-
+        response = requests.request("GET", url, headers=headers, params=querystring)
+        embed=discord.Embed(title="bruh random joke..")
+        await ctx.send(response.json()['setup'])
+        await asyncio.sleep(4)
+        await ctx.send(response.json()['delivery'])
 
 def setup(bot):
     bot.add_cog(games(bot))

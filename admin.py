@@ -46,7 +46,7 @@ class admin(commands.Cog):
         embed.add_field(name=".coinflip", value="flips a coin", inline=True)
         embed.add_field(name=".animequote", value="shows a random anime quote and the character", inline=True)
         embed.add_field(name=".fakeidentity", value="gives a random fake identity", inline=True)
-        embed.add_field(name=".nsfw (category)", value="shows a nsfw image based on the category you give", inline=True)
+        embed.add_field(name=".nsfw (category)", value="shows a nsfw image based on the category you give (ass, ero, hentai, maid, milf, oppai, oral, paizuri, selfies, uniform, ecchi)", inline=True)
         embed.add_field(name=".waifu", value="shows a random waifu image", inline=True)
         embed.add_field(name=".meme", value="shows a random reddit meme", inline=True)
         embed.set_footer(text="Made by @brandonn")
