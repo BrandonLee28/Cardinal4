@@ -8,7 +8,7 @@ load_dotenv()
 
 TOKEN= os.getenv("DISCORD_TOKEN")
 
-bot = commands.Bot(command_prefix='.')
+bot = commands.Bot(command_prefix='.',case_insensitive=True)
 
 @bot.command(pass_context = True)
 @commands.cooldown(1,15)
@@ -29,44 +29,77 @@ async def on_ready():
 
 @bot.event
 async def on_message(ctx):
-    try:
         if ctx.channel.name == "counting":
-            try:
-                number = float(ctx.content)
-                with open('storage.json','r+') as f:
-                    data = json.load(f)
-                    if number == data['current']+1:
-                        if data['lastcounter'] == ctx.author.id:
-                            await ctx.reply('you cant say it twice in a row you moron..')
+            if ctx.guild.id == 929185019879125032:
+                try:
+                    number = float(ctx.content)
+                    with open('929185019879125032.json','r+') as f:
+                        data = json.load(f)
+                        if number == data['current']+1:
+                            if data['lastcounter'] == ctx.author.id:
+                                await ctx.reply('you cant say it twice in a row you moron..')
+                                data['current'] = 0
+                                f.seek(0)
+                                json.dump(data,f,indent=4)
+                                f.truncate()
+                                await ctx.add_reaction('❌')
+                                await ctx.reply('you suck a counting you are back to 0 now bahahaha.')
+                                await bot.process_commands(ctx)
+                            else:
+                                data['current'] = data['current'] + 1
+                                data['lastcounter'] = ctx.author.id
+                                f.seek(0)
+                                json.dump(data,f,indent=4)
+                                f.truncate()
+                                await ctx.add_reaction('✅')
+                        else:
                             data['current'] = 0
+                            data['lastcounter'] = ""
                             f.seek(0)
                             json.dump(data,f,indent=4)
                             f.truncate()
                             await ctx.add_reaction('❌')
                             await ctx.reply('you suck a counting you are back to 0 now bahahaha.')
-                            await bot.process_commands(ctx)
+                    await bot.process_commands(ctx)
+                except:
+                    await bot.process_commands(ctx)
+            if ctx.guild.id == 856970532510367784:
+                try:
+                    number = float(ctx.content)
+                    with open('856970532510367784.json','r+') as f:
+                        data = json.load(f)
+                        if number == data['current']+1:
+                            if data['lastcounter'] == ctx.author.id:
+                                await ctx.reply('you cant say it twice in a row you moron..')
+                                data['current'] = 0
+                                f.seek(0)
+                                json.dump(data,f,indent=4)
+                                f.truncate()
+                                await ctx.add_reaction('❌')
+                                await ctx.reply('you suck a counting you are back to 0 now bahahaha.')
+                                await bot.process_commands(ctx)
+                            else:
+                                data['current'] = data['current'] + 1
+                                data['lastcounter'] = ctx.author.id
+                                f.seek(0)
+                                json.dump(data,f,indent=4)
+                                f.truncate()
+                                await ctx.add_reaction('✅')
                         else:
-                            data['current'] = data['current'] + 1
-                            data['lastcounter'] = ctx.author.id
+                            data['current'] = 0
+                            data['lastcounter'] = ""
                             f.seek(0)
                             json.dump(data,f,indent=4)
                             f.truncate()
-                            await ctx.add_reaction('✅')
-                            await bot.process_commands(ctx)
+                            await ctx.add_reaction('❌')
+                            await ctx.reply('you suck a counting you are back to 0 now bahahaha.')
+                    await bot.process_commands(ctx)
+                except:
+                    await bot.process_commands(ctx)
 
-                    else:
-                        data['current'] = 0
-                        data['lastcounter'] = ""
-                        f.seek(0)
-                        json.dump(data,f,indent=4)
-                        f.truncate()
-                        await ctx.add_reaction('❌')
-                        await ctx.reply('you suck a counting you are back to 0 now bahahaha.')
-                        await bot.process_commands(ctx)
-            except ValueError:
-                await bot.process_commands(ctx)
-    except:
-        await bot.process_commands(ctx)
+        else:
+            await bot.process_commands(ctx)
+
 
 bot.load_extension('admin')
 bot.load_extension('upload')
