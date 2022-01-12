@@ -106,7 +106,7 @@ async def on_message_delete(message):
     if message.channel.name == "counting":
         embed=discord.Embed(title="Message Deleted", description=message.content, color=0xd400ff)
         embed.set_author(name=message.author, icon_url=message.author.avatar_url)
-        await ctx.send(embed=embed)
+        await message.channel.send(embed=embed)
 
 bot.load_extension('admin')
 bot.load_extension('upload')
